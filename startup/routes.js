@@ -9,12 +9,14 @@ const categories = require("../routes/categories");
 const search = require("../routes/search");
 const error = require("../middleware/error");
 const logger = require("morgan");
+const cors = require("cors");
 
 module.exports = function (app) {
     app.use(logger('dev'));
     app.use(json());
     app.use(urlencoded({ extended: true }));
     app.use(cookieParser());
+    app.use(cors());
     app.use('/api/users', usersRouter);
     app.use('/api/products', productsRouter);
     app.use('/api/auth', auth);
